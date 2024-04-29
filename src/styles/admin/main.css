@@ -1,0 +1,575 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    
+}
+:root{
+    --background: #1D1B26;
+    --whiteText: #fff;
+    --mainColor: #FDA640;
+    --borderColor: #303030;
+    --grayColor: #CACACA;
+    --cardColor: #2F2D37;
+    --subText: #A09E9E;
+    --inputBack: #221F2F;
+    --subBack: #2B2835;
+
+}
+.body{
+    background-color: var(--background);
+
+    min-height: 100vh;
+}
+
+.admin-navbar{
+    padding: 20px 100px;
+    background-color: var(--subBack);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 300;
+}
+.admin-navbar .top-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.admin-navbar .top-nav .left-nav{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.admin-navbar .top-nav .left-nav .links{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.admin-navbar .top-nav .left-nav .links a{
+    color: white;
+    transition: 0.4s ease-in-out;
+    text-decoration: none;
+}
+.admin-navbar .top-nav .left-nav .logo h2{
+    color: #FDA640;
+}
+.admin-navbar .bottom-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    background: red;
+}
+.admin-navbar .bottom-nav span{
+    font-size: 14px;
+    color: var(--subText);
+    font-weight: 300;
+}
+.admin-navbar .bottom-nav .hello {
+    font-size: 20px;
+    color: var(--whiteText);
+}
+.admin-navbar .top-nav .top-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.admin-navbar .top-nav .top-right .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: gray;
+    cursor: pointer;
+}
+.admin-navbar .top-nav .top-right .setting-modal{
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 1px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    color: black;
+}
+.admin-navbar .top-nav .top-right .setting-modal.active{
+    display: flex;
+}
+
+.main-admin{
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.main-admin .admin-articles{
+    flex: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-admin .admin-articles .admin-artcles-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-admin .admin-articles .admin-artcles-head span{
+    font-size: 18px;
+    color: white;
+    font-weight: 400;
+}
+.main-admin .admin-articles .admin-artcles-head a{
+    text-decoration: none;
+    color: var(--mainColor);
+    font-weight: 100;
+    font-size: 14px;
+}
+.admin-insights-main{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    gap: 10px;
+}
+
+.new-aritcle-container{
+    padding: 140px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.new-aritcle-container h1{
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+}
+#editor{
+    width: 100%;
+    background: var(--inputBack);
+}
+.new-form{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 20px;
+}
+.new-form .input-contain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+.new-form .input-contain span{
+    color: var(--whiteText);
+}
+.new-form .input-contain input{
+    padding: 20px;
+    width: 100%;
+
+    background: var(--inputBack);
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+.new-form .input-contain textarea{
+    padding: 10px;
+    width: 100%;
+    background-color:var(--inputBack);
+    border-radius: 6px;
+    border: none;
+    height: 14vh;
+    border: none;
+    color: white;
+}
+.admin-form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+    height: 50px;
+    border: none;
+    background-color: var(--mainColor);
+    color: var(--whiteText);
+    cursor: pointer;
+    width: 200px;
+    margin: 0px auto;
+}
+.field{
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+.field:focus{
+    outline:none;
+    padding: 4px;
+}
+.blogs-page{
+    padding: 140px 100px;
+}
+.all-articles{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.all-articles h1{
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+}
+.all-articles .admin-all-articles-card{
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+}
+.articles-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.new-article{
+    padding: 15px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #FDA640;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+
+.main-message{
+    padding: 140px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-message h1{
+    color: var(--whiteText);
+    font-size: 24px;
+    font-weight: 500;
+}
+.message-conatiner{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
+}
+.message-card{
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--subBack);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.message-card .message-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.message-card .message-top .delete{
+    cursor: pointer;
+}
+.message-card .mesasage-head{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.message-card .mesasage-head .profile{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: gray;
+}
+.message-card .mesasage-head .sender-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.message-card .mesasage-head .sender-info h2{
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+.message-card .mesasage-head .sender-info span{
+    color: var(--subText);
+    font-weight: 200;
+    font-size: 14px;
+}
+.message-card .message-body span{
+    color: var(--whiteText);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+
+
+
+.users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 00px 0px;
+  }
+  .users .singleUser {
+    background: #2B2835;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+   
+    border-radius: 8px;
+  }
+  .users .singleUser span {
+    color: white;
+  
+  }
+  .users .profile {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .users .profile span{
+    text-transform: uppercase;
+  }
+  .users .profile span{
+    color: black;
+    font-weight: 700;
+  }
+  .users .singleDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+ 
+  .update-modal{
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.409);
+    backdrop-filter: blur(4px);
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .update-modal .modal-form{
+    width: 50%;
+    background:  var(--background);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .update-modal .modal-form h1{
+    color: white;
+    font-size: 20px;
+  }
+  .update-modal .modal-form form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .update-modal .modal-form form .form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+  }
+  .update-modal .modal-form .contain{
+    display: flex;
+    flex-direction: column;
+  }
+  .update-modal .modal-form .contain span{
+    color: white;
+    font-weight: 300;
+  }
+  .update-modal .modal-form input{
+    background: var(--inputBack);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    font-weight: 300;
+  }
+  .update-modal .modal-form textarea{
+    background-color: var(--inputBack);
+    border: none;
+  }
+  .update-modal .modal-form form button{
+    background-color: var(--mainColor);
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin: 0px auto;
+  }
+  .update-modal .modal-form form button span{
+    color: white;
+    font-size: 18px;
+  }
+  .update-modal .modal-form .admin-field:focus{
+    outline: none;
+
+  }
+
+  .main-setting{
+    padding: 140px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-setting .admin-info{
+    padding: 10px 20px;
+    background: var(--subBack);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    border-radius: 12px;
+
+}
+.main-setting .admin-info .info-part{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.main-setting .admin-info .admin-profile{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.main-setting .admin-info .admin-profile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.main-setting .admin-info .admin-names{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.main-setting .admin-info .admin-names h1{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.main-setting .admin-info .admin-names span{
+    padding: 4px 10px;
+    background: var(--mainColor);
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+}
+.main-setting .admin-info .info span{
+    color: var(--whiteText);
+    font-weight: 300;
+}
+.main-setting .admin-info .info p{
+    color: var(--subText);
+    font-weight: 300;
+    font-size: 14px;
+}
+.main-setting .setting-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.main-setting .setting-form h1{
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+.main-setting .setting-form .form-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    align-items: end;
+    gap: 20px;
+    
+
+    width: 100%;
+  
+}
+.main-setting .setting-form .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: var(--subBack);
+    
+    padding: 20px;
+
+}
+.main-setting .setting-form .form .input-contain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.main-setting .setting-form .form .input-contain span{
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+}
+.main-setting .setting-form .form .input-contain input{
+    padding: 14px;
+    background: transparent;
+    border: 1px solid var(--whiteText);
+    color: white;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.main-setting .setting-form .form .input-contain .profile{
+    width: 60px;
+    height: 60px;
+    background: gray;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+.main-setting .setting-form .form .input-contain .profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.main-setting .setting-form .form .input-contain .profile .delete{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.main-setting .setting-form .form button{
+    padding: 14px;
+    border: none;
+    background: var(--mainColor);
+    color: var(--whiteText);
+}
