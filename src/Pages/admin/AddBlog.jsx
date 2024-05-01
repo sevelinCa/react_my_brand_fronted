@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import { useAddBlogMutation } from '../../redux/slices/BlogApiSlice'
 
 const AddBlog = () => {
   const [loading,setLoading] = useState(false)
@@ -9,31 +10,25 @@ const AddBlog = () => {
   const [description,setDescription] = useState("")
   const [content,setContent] = useState("")
 
+
+  const [addBlog, {isLoading,isError}] = useAddBlogMutation()
+
   const sendBlog = async(e)=>{
     setLoading(true)
     e.preventDefault()
     try {
       const token = JSON.parse(localStorage.getItem("token"));
+      
       const blogData = new FormData()
       blogData.append("title", title)
       blogData.append("imageUrl", image)
       blogData.append("description", description)
       blogData.append("content", content)
-      await axios.post("https://mybrand-backend-1-8rxh.onrender.com/blog/addBlog", blogData, {
-        headers:{
-          Authorization: `Bearer ${token}`
-        }
-         
-      }).then((response)=>{
-        if(response.status === 201){
-          setLoading(false)
-          toast.success("Blog Added Successfully")
-        }else{
-          setLoading(false)
-          toast.warn(response.data.message)
 
-        }
-      })
+      const response = await addBlog(blogData).unwrap()
+      if(response){
+        console.log(response)
+      }
       
     } catch (error) {
       console.log(error)
@@ -82,7 +77,7 @@ const AddBlog = () => {
         <div onBlur={(e)=> setContent(e.target.innerHTML)} className="field" id="editor" contenteditable="true" aria-checked="true"></div>
       </div>
       <button type="submit">
-        {loading ? (
+        {isLoading ? (
 
           <span className="loader"></span>
         ): (

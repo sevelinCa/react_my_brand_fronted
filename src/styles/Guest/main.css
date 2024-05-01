@@ -41,6 +41,7 @@ html{
     background: var(--background);
     top: 0;
     left: 0;
+    z-index: 100;
   
     
 }
@@ -478,6 +479,8 @@ footer{
     background: var(--cardColor);
     padding: 40px 50px;
     gap: 40px;
+    z-index: 2000;
+    position: absolute;
 }
 footer .footer-container{
     display: grid;
@@ -634,77 +637,56 @@ footer  .copy{
 
 
 /* opened blog */
-.single-container {
+.single-container{
     display: flex;
-    flex-direction: column; /* Change to column */
+    flex-direction: row;
     gap: 20px;
-    padding: 60px 20px;
-    max-width: 100%;
-    min-height: 500vh;
+    padding: 100px 0px;
 }
 .single-container .img-content{
-    width: 65%;
+    display: flex;
+    flex-direction: column;
+    width:60%;
+}
+.single-container .img-content .image{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.single-container .content{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-}
-.single-container  .likes{
-    display: flex;
-   
-    gap: 20px;
-}
-.single-container .content h1{
-    color: white;
-    font-size: 24px;
-}
-.single-container .content span{
-    color: var(--subText);
-}
-.single-container .image{
-    width: 100%;
-    gap: 20px;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
- 
-}
-.single-container .image img{
-    width: 100%;
-    height: 100%;
+.single-container .img-content img{
+    max-height: 40vh;
     object-fit: cover;
 }
-.comment-content{
-   width: 500px;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    background: var(--inputBack);
-    width: 400px;
-    position: fixed;
-    right: 5vh;
-    
-
-} 
+ 
 .timeBlock{
     display: flex;
     flex-direction: column;
     align-items: end;
 }
+.single-container .comment-content{
+    display: flex;
+    flex-direction: column;
+    background: var(--inputBack);
+    border-radius: 6px;
+    padding: 10px;
+    gap: 10px;
+    position: fixed;
+    right: 10vh;
+    z-index: 1;
+} 
 .comment-content h1{
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
     padding: 0px 10px;
 }
+.single-container .comment-content .likes{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
 .comment-content .input-content{
-   bottom: 20px;
+  
     padding: 10px 0px;
     display: flex;
     flex-direction: column;
@@ -726,13 +708,10 @@ footer  .copy{
     color: white;
     width: 90%;
 }
-.comment-content .person-comment{
-    display: flex;
-    flex-direction: column;
-    background: rgb(25, 25, 43);
-    padding: 20px;
-    gap: 10px;
-
+.person-comment{
+   border-bottom: 1px solid white;
+   background: #25213a ;
+   padding: 8px;
 }
 .comment-content  h1{
     color: white;
@@ -753,8 +732,6 @@ footer  .copy{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    
 }
 .comment-content  .person-comment .person-header span{
     color: white;

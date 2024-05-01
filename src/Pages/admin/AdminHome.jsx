@@ -36,7 +36,7 @@ const AdminHome = () => {
           <div className="admin-artcles-head">
             <span>Recent articles</span>
      
-            <a href="./aritcles.html">View all</a>
+            <a href="/admin/blogs">View all</a>
           </div>
        
           <h1 style={{ textAlign: 'center', color: 'white' }} className="admin-noblog"></h1>
@@ -117,7 +117,7 @@ const AdminHome = () => {
           </>
           )}
           </div>
-          <a href="./addBlog.html" style={{color:'white',background:'orange',width:'200px',padding:'20px',marginLeft:'auto'}} className="new-aritcle">New Article</a>
+          <a href="./addBlog" style={{color:'white',background:'#FDA640',width:'200px',padding:'20px',marginLeft:'auto'}} className="new-aritcle">New Article</a>
         </div>
         </main>
     </div>

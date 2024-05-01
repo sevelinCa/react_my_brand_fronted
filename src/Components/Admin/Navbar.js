@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/slices/UserSlice";
 const Navbar = () => {
-  const [openModal,setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
   const modalRef = useRef()
   const userInfo = JSON.parse(localStorage.getItem("user"));
   const usernameAB = userInfo.username;
@@ -9,11 +11,11 @@ const Navbar = () => {
   const ABR1 = usernameAB.split(" ")[0].slice(0, 1);
   const ABR2 = usernameAB.split(" ")[1]?.slice(0, 1);
 
-  const openModalFunc=()=>{
+  const openModalFunc = () => {
     setOpenModal(false)
   }
 
- 
+
   const handelOutsideClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       openModalFunc()
@@ -22,9 +24,10 @@ const Navbar = () => {
 
   document.addEventListener("mousedown", handelOutsideClick);
 
-  const LoggOut = ()=>{
-    localStorage.removeItem('token')
-    window.location.href='signin'
+  const LoggOut = () => {
+    useDispatch(logout())
+
+    window.location.href = '/signin'
 
   }
 
@@ -40,7 +43,7 @@ const Navbar = () => {
           <div className="links">
             <a href="./">Home</a>
             <a href="./messages">Message</a>
-            <a href="./blogs">Articles</a>
+            <a href="/admin/blogs">Articles</a>
           </div>
         </div>
         <div className="top-right">
@@ -52,7 +55,7 @@ const Navbar = () => {
               gap: "4px",
               cursor: "pointer",
             }}
-            onClick={()=> setOpenModal(!openModal)}
+            onClick={() => setOpenModal(!openModal)}
           >
             <div
               id="profile"
@@ -81,32 +84,32 @@ const Navbar = () => {
           </div>
           {openModal && (
 
-          
-          <div className="setting-modal" >
-            <div ref={modalRef} style={{display:'flex',flexDirection:'column',gap:'20px'}}>
 
-            <a href="./setting">
-              <div></div>
-              <span>Setting</span>
-            </a>
-            <a href="./users">
-              <div></div>
-              <span>Users</span>
-            </a>
-            <div
-              onClick={LoggOut}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                cursor: "pointer",
-                alignItems: "center",
-              }}
-              >
-              <div></div>
-              <span>Logout</span>
+            <div className="setting-modal" >
+              <div ref={modalRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+                <a href="/admin/setting">
+                  <div></div>
+                  <span>Setting</span>
+                </a>
+                <a href="/admin/users">
+                  <div></div>
+                  <span>Users</span>
+                </a>
+                <div
+                  onClick={LoggOut}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    cursor: "pointer",
+                    alignItems: "center",
+                  }}
+                >
+                  <div></div>
+                  <span>Logout</span>
+                </div>
               </div>
             </div>
-          </div>
           )}
         </div>
       </div>

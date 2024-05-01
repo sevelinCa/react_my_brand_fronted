@@ -4,6 +4,32 @@ import Footer from "../../Components/Guest/Footer";
 import testimonials from "../../data/testimonials.json";
 
 const Home = () => {
+  const [startIndex, setStartIndex] = useState(0);
+const numberToShow = 2;
+
+const filtedTestimonials = testimonials.slice(startIndex, startIndex+numberToShow);
+
+const handerNext =()=>{
+  const nextIndex = startIndex +numberToShow
+  if(nextIndex > testimonials.length-1 ){
+
+  }else{
+    setStartIndex(startIndex+2)
+    
+  }
+
+}
+const handerPrev =()=>{
+  const nextIndex = startIndex -numberToShow
+  if(nextIndex < 0 ){
+
+  }else{
+    setStartIndex(startIndex-2)
+    
+  }
+
+}
+
   
 
   return (
@@ -12,7 +38,7 @@ const Home = () => {
         <Navbar />
 
         <main>
-          z
+          
           <div className="hero-section">
             <div className="hero-content">
               <h1>Hello ! I’m Mwungeri Ngabo Sevelin</h1>
@@ -141,32 +167,25 @@ const Home = () => {
           <div className="testimonials-section">
             <h1>Testimonials</h1>
             <div className="testimonials-cards">
-              {testimonials.map((item, index) => {
+              {filtedTestimonials.map((item, index) => {
                 return (
                   <div className="test-card">
                     <div className="head">
                       <div className="profile"></div>
                       <div className="content">
-                        <h2>Kwizera Sam</h2>
-                        <span>Ceo techlife</span>
+                        <h2>{item.names}</h2>
+                        <span>{item.position}</span>
                       </div>
                     </div>
                     <span>
-                      “ I had the pleasure of working with you on a challenging
-                      software project, and I couldn't be happier with the
-                      results. Sevelin demonstrated exceptional technical skills
-                      and creativity, delivering a solution that exceeded our
-                      expectations. Their professionalism and dedication to the
-                      project were truly impressive. I highly recommend Sevelin
-                      to anyone seeking a skilled and reliable software
-                      developer.
+                      {item.message}
                     </span>
                   </div>
                 );
               })}
             </div>
             <div className="buttons">
-              <div className="butt prev">
+              <div className="butt prev" onClick={handerPrev}>
                 <svg
                   width="34"
                   height="34"
@@ -192,7 +211,7 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <div className="butt next">
+              <div className="butt next" onClick={handerNext}>
                 <svg
                   width="34"
                   height="34"

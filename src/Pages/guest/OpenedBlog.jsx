@@ -11,6 +11,35 @@ const OpenedBlog = () => {
   const [commentLength,setCommenLength] = useState(0)
   const { id } = useParams();
 
+  const [name,setName] = useState("")
+  const [newComment,setNewComment] = useState("")
+
+  const addComment = async(e)=>{
+    setLoading(true)
+    e.preventDefault()
+    try {
+      const commentData = {
+        name: name,
+        comment: newComment,
+        blog: id
+      }
+      await axios.post("https://mybrand-backend-1-8rxh.onrender.com/blog/addComment", commentData).then((response)=>{
+        if(response){
+          setLoading(false)
+          window.location.reload()
+        }
+        setLoading(false)
+      }).catch((error)=>{
+        setLoading(false)
+        console.log(error)
+      })
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+      
+    }
+  }
+
   
 
   useEffect(() => {
@@ -140,7 +169,7 @@ const OpenedBlog = () => {
               {comments.map((item,index)=>{
                 return(
                   <div className="person-comment">
-                    <div class="person-header">
+                  <div class="person-header">
                   <div class="profile-name">
                     <div class="profile"></div>
                     <span class="">{item.name}</span>
@@ -160,12 +189,12 @@ const OpenedBlog = () => {
               })}
               <div className="per"></div>
             </div>
-            <form id="commentForm" class="input-content">
+            <form onSubmit={addComment} id="commentForm" class="input-content">
               <div
                 style={{ display: "flex", flexDirection: "row", gap: " 4px" }}
               >
-                <input type="text" id="name" placeholder="Your Name" />
-                <input type="text" id="comment" placeholder="Comment Here" />
+                <input onChange={(e)=>setName(e.target.value)} type="text" id="name" placeholder="Your Name" />
+                <input onChange={(e)=> setNewComment(e.target.value)}  type="text" id="comment" placeholder="Comment Here" />
               </div>
 
               <button type="submit">

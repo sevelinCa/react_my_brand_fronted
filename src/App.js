@@ -20,20 +20,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [blogs,setBlogs] = useState([])
 
-  useEffect(() => {
-    const socket = io("https://mybrand-backend-1-8rxh.onrender.com");
-
-    socket.on("connect", () => {
-      console.log("Connected to server");
-    });
-
-    // Clean up function to close the socket connection when component unmounts
-    return () => {
-      socket.disconnect();
-    };
-  }, [])
 
 
   return (

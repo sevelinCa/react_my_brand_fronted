@@ -75,27 +75,14 @@
     }
     .main-signin .signin-header{
    
-        width: 50%;
+        width: 70%;
     }
     .main-signin form {
         width: 40%;
        
     }
 
-        .single-container{
-            display: flex;
-            flex-direction: column;
-        }
-        .single-container .img-content{
-            width: 100%;
-        }
-        .comment-content{
-            position: relative;
-            right: 0vh;
-            z-index: 1000;
-            width: 100%;
-            
-        }
+   
         
   
 }
@@ -132,10 +119,10 @@
     }
     .main-signin .signin-header{
    
-        width: 80%;
+        width: 90%;
     }
     .main-signin form {
-        width: 80%;
+        width: 90%;
        
     }
     .portfolio .projects {

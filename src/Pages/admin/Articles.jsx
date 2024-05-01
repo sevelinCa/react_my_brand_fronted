@@ -50,7 +50,7 @@ const Articles = () => {
       <div className="all-articles">
         <div className="articles-head">
           <h1>Blogs</h1>
-          <a href="./addBlog.html" className="new-article">
+          <a href="/admin/addBlog" className="new-article">
             New Blog
           </a>
         </div>

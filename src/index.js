@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 
 import App from "./App";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import reportWebVitals from "./reportWebVitals";
@@ -13,10 +15,13 @@ import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <ToastContainer />
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+
+      <BrowserRouter>
+        <ToastContainer />
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
