@@ -1,6 +1,7 @@
-import { apiSlice } from "./apiSlice";
+import { ApiSliceWithoutToken } from "./ApiSliceWithoutToken";
 
-export const UserApiSlice  = apiSlice.injectEndpoints({
+
+export const UserApiSlice  = ApiSliceWithoutToken.injectEndpoints({
     endpoints: (builder)=>({
         login: builder.mutation({
             query: (data)=>({

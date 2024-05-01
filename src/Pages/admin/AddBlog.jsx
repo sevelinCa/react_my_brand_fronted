@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import { useAddBlogMutation } from '../../redux/slices/BlogApiSlice'
+import { useAddBlogMutation } from '../../redux/slices/AdminBlogApiSlice'
 
 const AddBlog = () => {
   const [loading,setLoading] = useState(false)
@@ -18,7 +18,6 @@ const AddBlog = () => {
     e.preventDefault()
     try {
       const token = JSON.parse(localStorage.getItem("token"));
-      
       const blogData = new FormData()
       blogData.append("title", title)
       blogData.append("imageUrl", image)

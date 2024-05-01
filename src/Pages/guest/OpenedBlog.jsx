@@ -26,7 +26,9 @@ const OpenedBlog = () => {
       await axios.post("https://mybrand-backend-1-8rxh.onrender.com/blog/addComment", commentData).then((response)=>{
         if(response){
           setLoading(false)
-          window.location.reload()
+          setComments([...comments ,response.data.data])
+          setCommenLength(commentLength+1)
+         
         }
         setLoading(false)
       }).catch((error)=>{
@@ -166,7 +168,7 @@ const OpenedBlog = () => {
             </div>
             <h1>Comments</h1>
             <div class="comment">
-              {comments.map((item,index)=>{
+              {comments.slice().reverse().map((item,index)=>{
                 return(
                   <div className="person-comment">
                   <div class="person-header">

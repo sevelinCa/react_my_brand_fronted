@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Guest/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { io } from "socket.io-client";
+import { useSelectBlogQuery } from "../../redux/slices/BlogApiSlice";
+
 
 const Blogs = () => {
 
@@ -11,21 +12,18 @@ const Blogs = () => {
   const [loading, setLoading] = useState(false);
   const [blogsData, setBlogsData] = useState([]);
   const [action, setAction] = useState("");
+
  
 
+  const { data: responseData, isLoading,error} = useSelectBlogQuery()
+ 
 
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://mybrand-backend-1-8rxh.onrender.com/blog/selectBlog")
-      .then((response) => {
-        setBlogsData(response.data.blog);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    useEffect(() => {
+    if (responseData && responseData.blog) {
+      // If responseData.blog exists and is an array, update blogsData state
+      setBlogsData(responseData.blog);
+    }
+  }, [responseData]);
 
   const likeBlog = async (id) => {
     let likedBlog = JSON.parse(localStorage.getItem("likedBlog")) || [];
@@ -39,8 +37,12 @@ const Blogs = () => {
             { action: "like" }
           )
           .then((response) => {
-            if (response) {
-              window.location.reload()
+            if (response.data) {
+              const updatedBlogs = blogsData.map((blog) =>
+              blog._id === id ? { ...blog, likes:  blog.likes + 1 } : blog
+            );
+            setBlogsData(updatedBlogs)
+             
             }
           })
           .catch((error) => {
@@ -58,8 +60,11 @@ const Blogs = () => {
             { action: "unlike" } 
           )
           .then((response) => {
-            if (response) {
-              window.location.reload()
+            if (response.data) {
+              const updatedBlogs = blogsData.map((blog) =>
+              blog._id === id ? { ...blog, likes:  blog.likes - 1 } : blog
+            );
+            setBlogsData(updatedBlogs)
             }
           })
           .catch((error) => {
@@ -92,7 +97,7 @@ const Blogs = () => {
                   <div className="loading-bar"></div>
                 </div>
               )}
-              {!loading && (
+              {!loading && blogsData && (
                 <div className="insights-main" id="ii">
                   {blogsData.map((item, index) => {
                     return (
